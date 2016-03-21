@@ -1,0 +1,31 @@
+var loc = core.getObserverLocation();
+var today = core.getDate();
+ 
+core.setObserverLocation(loc);
+core.setDate(today); 
+
+//setting viewing conditions - no atmosphere, no landscape, no fog
+core.clear("natural");
+LandscapeMgr.setFlagLandscape(false);
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagFog(false);
+ 
+//label all planets
+SolarSystem.setFlagLabels(true);
+
+ 
+//make the GUI visible so we can see what object selected at any point
+core.setGuiVisible(true);
+ 
+//Vega//
+//move focus location
+core.selectObjectByName("Vega", false);
+StelMovementMgr.setFlagTracking(true);
+core.wait(1)
+ 
+//zoom into focus object
+StelMovementMgr.autoZoomIn(2);
+core.wait(5);
+StelMovementMgr.autoZoomOut(6);
+
+core.setTimeRate(250);
